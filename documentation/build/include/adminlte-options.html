@@ -1,0 +1,118 @@
+<section id="adminlte-options">
+    <h2 class="page-header"><a href="#adminlte-options">AdminLTE Javascript 配置</a></h2>
+
+    <p class="lead">可以通过以下方法之一修改 AdminLTE 的 app.js 文件的配置</p>
+
+    <h3>修改 app.js 文件</h3>
+    在Javascript文件内,修改 <code>$.AdminLTE.options</code>对象去适配
+    <p>Within the main Javascript file, modify the <code>$.AdminLTE.options</code> 来适配你的情况.</p>
+
+    <h3>定义 AdminLTEOptions</h3>
+    <p>除此之外, 你可以定义一个叫做<code>AdminLTEOptions</code> 的全局变量 并且在你加载app.js前初始化它</p>
+    <p>例子</p>
+  <pre class="prettyprint"><code class="html">&LT;script>
+      var AdminLTEOptions = {
+      //Enable sidebar expand on hover effect for sidebar mini
+      //This option is forced to true if both the fixed layout and sidebar mini
+      //are used together
+      sidebarExpandOnHover: true,
+      //BoxRefresh Plugin
+      enableBoxRefresh: true,
+      //Bootstrap.js tooltip
+      enableBSToppltip: true
+      };
+      &LT;/script>
+      &LT;script src="dist/js/app.js" type="text/javascript">&LT;/script></code></pre>
+
+    <h3>可选的 AdminLTE 配置</h3>
+  <pre class="prettyprint"><code class="javascript">{
+      // 在导航条菜单添加 slimscroll(虚拟滚动条)
+      // 这需要你在每张页面加载app.js前加载slimscroll插件
+      navbarMenuSlimscroll: true,
+      navbarMenuSlimscrollWidth: "3px", //虚拟滚动条宽度
+      navbarMenuHeight: "200px", //滚动条所在的菜单的高度
+      //全局动画事件的速度,如盒子关闭/扩展、工具栏下滑、上滑.可传入数字(单位为毫秒)
+      //'fast', 'normal', or 'slow'
+      animationSpeed: 500,
+      //左侧工具栏切换(显示隐藏)按钮选择器
+      sidebarToggleSelector: "[data-toggle='offcanvas']",
+      //激活工具栏切换按钮
+      sidebarPushMenu: true,
+      //自适应布局(fixed)下,激活工具栏虚拟滚动条 (需要 SlimScroll 插件)
+      sidebarSlimScroll: true,
+      //允许鼠标悬浮工具栏mini按钮时弹出子级菜单
+      //在自适应布局(fixed)且工具栏已最小化情况下,选项强行为true
+      sidebarExpandOnHover: false,
+      //BoxRefresh Plugin
+      enableBoxRefresh: true,
+      //Bootstrap.js tooltip
+      enableBSToppltip: true,
+      BSTooltipSelector: "[data-toggle='tooltip']",
+      // 开启快速触屏.使用Fastclick.js去除掉移动端页面300ms延迟现象
+      //使移动端设备体验更流畅. 如果你想开启本选项,
+      //请确认你在加载app.js前加载了Fastclick.js
+      enableFastclick: true,
+      //控制工具栏配置
+      enableControlSidebar: true,
+      controlSidebarOptions: {
+      //Which button should trigger the open/close event
+      toggleBtnSelector: "[data-toggle='control-sidebar']",
+      //The sidebar selector
+      selector: ".control-sidebar",
+      //Enable slide over content
+      slide: true
+      },
+      //盒子插件.开启本项配置来允许盒子最小化或移除
+      enableBoxWidget: true,
+      //盒子插件配置
+      boxWidgetOptions: {
+      boxWidgetIcons: {
+      //Collapse icon
+      collapse: 'fa-minus',
+      //Open icon
+      open: 'fa-plus',
+      //Remove icon
+      remove: 'fa-times'
+      },
+      boxWidgetSelectors: {
+      //Remove button selector
+      remove: '[data-widget="remove"]',
+      //Collapse button selector
+      collapse: '[data-widget="collapse"]'
+      }
+      },
+      //聊天框插件选项
+      directChat: {
+      //Enable direct chat by default
+      enable: true,
+      //The button to open and close the chat contacts pane
+      contactToggleSelector: '[data-widget="chat-pane-toggle"]'
+      },
+      //定义网站全局颜色别名
+      colors: {
+      lightBlue: "#3c8dbc",
+      red: "#f56954",
+      green: "#00a65a",
+      aqua: "#00c0ef",
+      yellow: "#f39c12",
+      blue: "#0073b7",
+      navy: "#001F3F",
+      teal: "#39CCCC",
+      olive: "#3D9970",
+      lime: "#01FF70",
+      orange: "#FF851B",
+      fuchsia: "#F012BE",
+      purple: "#8E24AA",
+      maroon: "#D81B60",
+      black: "#222222",
+      gray: "#d2d6de"
+      },
+      //bootstrap使用的标准屏幕宽度,如果你在.less中修改了这些变量,请在配置文件中也修改
+      screenSizes: {
+      xs: 480,
+      sm: 768,
+      md: 992,
+      lg: 1200
+      }
+      }</code></pre>
+</section>
