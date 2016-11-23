@@ -1,0 +1,142 @@
+#JAVA常用工具总结
+
+>最近深感后端要学的东西太多了，为了不至于拣了芝麻丢了西瓜，同时与大家分享下知道的一些东西，所以写了这篇文章
+
+## 框架
+这里就不根据三层架构来细分了
+
+1. SSM([SpringMVC]()+[Spring]()+[Mybatis]())
+   > 就不介绍 ssh 了
+
+2. [Spring Boot](http://projects.spring.io/spring-boot) 
+
+3. [jFinal](http://www.jfinal.com)
+
+其他的诸如jersay就不介绍了
+
+## 注解
+> 感觉挺有用的，但又不知道怎么给他分类
+
+## 分布式工具
+
+1. [Duddo](http://dubbo.io)
+
+2. [Zookeeper](http://zookeeper.apache.org)
+
+## J.U.C并发框架
+> 本来想把redis加锁放在这里的，现在只能放到别的地方了
+
+1. Atomic包
+	
+2. 锁
+	>Java 有着synchronized、wait、notify/notifyAll内部锁，但J.U.C也提供了Lock、Condition，这里主要列举下2种锁的优缺点
+
+3. 线程池
+
+	*  ThreadPoolExecutor
+	*  Executors
+	*  Future，FutureTask
+
+4. 线程安全的集合
+	> 顾名思义,就是多线程访问时不会出现数据不一致或者数据污染。
+
+## 文件处理
+
+1. [POI](http://poi.apache.org/)
+
+	> Apache 出品的 Java 操作 Microsoft Office 的工具
+
+2. 	[Thumbnailator](https://github.com/coobird/thumbnailator)
+	> 图片处理工具
+
+3. [顽兔](http://wantu.taobao.com/mediaportal/index.htm)
+	> 首先顽兔是阿里云提供的文件存储云，但他提供的文件处理api很赞，另外七牛云也不错。	
+
+## 消息队列
+
+1. [RabbitMQ](http://www.rabbitmq.com/)
+
+2. [Kafka](http://kafka.apache.org)
+
+3. [Rocket](https://github.com/alibaba/RocketMQ)
+
+4. [ONS](https://www.aliyun.com/product/ons)
+	
+	> 阿里云提供的消息队列服务
+	
+> 貌似有些人也用redis的 pub/sub来做消息队列，我只能说，redis是内存数据库！！！
+
+## 数据库
+> 这里不单指传统的数据库，也包括NoSql和缓存
+
+1.  [Mysql](http://www.mysql.com)/[MariaDB](https://mariadb.org)
+
+2. [PostgreSQL](https://www.postgresql.org)
+
+3. [Alisql](https://github.com/alibaba/AliSQL)
+
+4. [Mongodb](https://www.mongodb.com)
+
+5. [Redis](http://redis.io)
+
+6. [HBase](http://hbase.apache.org)
+
+> 以上数据库均推荐使用阿里云，因为它提供了容灾、备份、恢复、监控、迁移等方面的全套解决方案，目前来看，价格也可接受。
+
+## 搜索
+
+1. [Solr](http://lucene.apache.org/solr)
+
+2. [ElasticSearch](https://www.elastic.co/products/elasticsearch)
+
+3. [OpenSearch](https://www.aliyun.com/product/opensearch)
+
+
+## 爬虫
+
+1. [WebMagic](http://webmagic.io)
+
+2. [神箭手](http://www.shenjianshou.cn) 
+
+## 前端渲染模板
+
+1. [Velocity](http://velocity.apache.org)
+
+2. [Thymeleaf](http://www.thymeleaf.org/)
+
+## Util工具
+从Json到日期的各种Util，想到什么写什么吧，很多阿里的开源(KPI)项目也是不错的.
+
+1. [opslabJutil](https://github.com/0opslab/opslabJutil)
+
+	很多常用Java操作方法
+	
+2. [Fastjson](https://github.com/alibaba/fastjson)
+	
+	一个很快的json转换工具
+	
+3. 	[Java-util](https://github.com/jdereg/java-util)
+	
+	一些复杂的java-util类方法
+
+## 部署
+
+1. [Jenkins](https://jenkins.io/index.html)
+
+## 测试
+
+1. Junit
+
+	> Java 自带的包
+	
+2. [mockito](https://github.com/mockito/mockito)	
+
+
+> PS1. 可以看出我上面列举的模块，大部分都添加了阿里云或者同类型产品，因为个人认为自己搞这个的成本（这里包括人工、时间、可能遇到无法解决的bug）太高，所以推荐能使用其他人的轮子就使用其他人的轮子吧。
+
+=
+> PS2. 目前很多产品的官方文档都写的很完善了，所以我建议学习一个新东西时，先去看官方文档，如果觉得还是不懂，再去看第三方提供的学习资料（包括文章、视频和demo）。对于语言或程序基础，我是很推荐书的，但对于一个具体的工具，我是不推荐看书的，因为：
+	1. 语言更新速度太快，书出来的时候，说不定这个东西已经添加很多功能了；	2. 这些书都不是官方写的（官方只会在网站上更新文档），所以出现了偏差，是不负责任的。
+
+=
+> PS3. 关于技术选型，我原来很是纠结于此（甚至有点像女生逛商场一样）。后来一位前辈教导我：技术是为了满足业务需求的，所以你在选择技术时，第一步是看他能否承担的起你的业务需求；其次尽量选择稳定、使用者多的技术，不然这个项目负责人一走，别人直接没法维护；最后，再前两者基础上，选择自己最熟悉的技术，这样开发效率能够最高，你就可以拿别人加班的时间来学习新东西。当然在自我成长的时候，还是要多接触新的技术的，学习它的使用方法，学习它的优秀的一些理念。
