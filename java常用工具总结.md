@@ -7,13 +7,42 @@
 这里就不根据三层架构来细分了
 
 1. SSM([SpringMVC]()+[Spring]()+[Mybatis]())
-   > 就不介绍 ssh 了
+   
+   > 就不介绍 SSH(Struts2 + Spring + Hibernate) 了 , 有兴趣自己搜索
+   
+   目前最常见的java web 开发框架，配合Maven管理项目能够快速搭建出一个高效的Java项目。
+   
+   > 这里安利一下 [IntelliJ IDEA](https://www.jetbrains.com/idea/),具体原因可以看[你认为IntelliJ IDEA是最智能的IDE吗？](https://www.zhihu.com/question/19690559)事实上这是我用过最舒服的IDE。
+   
+   >IntelliJ IDEA 企业版是收费的（社区版阉割的太多），但可以通过[lanyus](http://idea.lanyus.com)来获取注册码。
+   
 
 2. [Spring Boot](http://projects.spring.io/spring-boot) 
+	
+	Spring全家桶，从前端模板都数据库连接都已集成，只需要一段Maven/Gradle代码（或者Intellij 勾选几个要用的组件）就可以自定义出一个你自己的Java项目。
+	
 
 3. [jFinal](http://www.jfinal.com)
+ 
+	国产。。用起来感觉有点像Spring Boot，但挺不错的
 
-其他的诸如jersay就不介绍了
+> 其他框架诸如Jersay,Nutz,Resty就不介绍了，有兴趣的可以自己搜索，如果用于生产，建议使用上面3种框架。
+
+## 代码/项目管理
+
+1. Git
+
+	如果你是在github上看到本文的，应该就不需要介绍了
+
+2. [Maven](http://maven.apache.org) 
+	
+	项目管理工具，从项目的创建、添加jar包，到打包、部署你都可以使用maven命令来完成。当然我主要用它管理依赖包。
+	
+	一般公司都会有自己的私人仓库，通常使用[Sonatype Nexus](http://www.sonatype.org)来搭建，具体教程自己搜索，这里就不赘述了。
+
+3. [Gradle](https://gradle.org)
+
+	谷歌的项目管理工具，目前很多Android项目都是使用它来管理的，而它也可以用于后台
 
 ## 注解
 > 感觉挺有用的，但又不知道怎么给他分类
@@ -21,6 +50,7 @@
 ## 分布式工具
 
 1. [Duddo](http://dubbo.io)
+   
 
 2. [Zookeeper](http://zookeeper.apache.org)
 
@@ -30,57 +60,71 @@
 1. Atomic包
 	
 2. 锁
-	>Java 有着synchronized、wait、notify/notifyAll内部锁，但J.U.C也提供了Lock、Condition，这里主要列举下2种锁的优缺点
+	>Java 有着synchronized、wait、notify/notifyAll内部锁，但J.U.C也提供了Lock、Condition，[这里](http://blog.csdn.net/chengguotao/article/details/50498090)主要列举下2种锁的优缺点。
 
 3. 线程池
 
 	*  ThreadPoolExecutor
 	*  Executors
 	*  Future，FutureTask
+	*  Fork/Join
 
 4. 线程安全的集合
 
-	最常用的应该是 ConcurrentHashMap ，其他的自己去查吧
-	> 顾名思义,就是多线程访问时不会出现数据不一致或者数据污染。
+	顾名思义,就是多线程访问时不会出现数据不一致或者数据污染，这里有一个[例子](http://blog.csdn.net/nx188/article/details/50988037)。
+	
+	最常用的应该是 ConcurrentHashMap ，其他的详见[这篇文章](http://www.cnblogs.com/ijavanese/p/3778688.html)。
 
 ## 文件处理
 
 1. [POI](http://poi.apache.org/)
 
-	> Apache 出品的 Java 操作 Microsoft Office 的工具
+	Apache 出品的 Java 操作 Microsoft Office 的工具
 
 2. 	[Thumbnailator](https://github.com/coobird/thumbnailator)
-	> 图片处理工具
+	
+	图片处理工具
 
 3. [顽兔](http://wantu.taobao.com/mediaportal/index.htm)
-	> 阿里云提供的文件存储云，有着很赞的文件处理api，另外七牛云也不错。	
+	
+	阿里云提供的文件存储云，有着很赞的文件处理api，另外七牛云也不错。	
 
 ## 消息队列
 
 1. [RabbitMQ](http://www.rabbitmq.com/)
 
-2. [Kafka](http://kafka.apache.org)
+	RabbitMQ是一个在AMQP基础上完整的，可复用的企业消息系统
 
-3. [Rocket](https://github.com/alibaba/RocketMQ)
+2. [Kafka](http://kafka.apache.org)
+	
+	不知道是不是错觉，看到好几家公司用这个做日志系统
+
+3. [RocketMQ](https://github.com/alibaba/RocketMQ)
+	
+	阿里开源的消息中间件
 
 4. [ONS](https://www.aliyun.com/product/ons)
 	
-	> 阿里云提供的消息队列服务
+	> 阿里云提供的消息队列服务(据说用的就是RocketMQ?)
 	
 > 貌似有些人也用redis的 pub/sub来做消息队列，我只能说，redis是内存数据库！！！
 
 ## 数据库
-> 这里不单指传统的数据库，也包括NoSql和缓存
+> 这里不单指传统的数据库，也包括NoSql和内存数据库
 
-1.  [Mysql](http://www.mysql.com)/[MariaDB](https://mariadb.org)
+1. [Mysql](http://www.mysql.com)/[MariaDB](https://mariadb.org)
 
 2. [PostgreSQL](https://www.postgresql.org)
 
 3. [Alisql](https://github.com/alibaba/AliSQL)
 
+	AliSQL是阿里巴巴基于于MySQL官方版本的一个分支，性能较MySQL有较大提升。
+
 4. [Mongodb](https://www.mongodb.com)
 
 5. [Redis](http://redis.io)
+	
+	虽然redis也会在硬盘上读写，然而大部分时候它是存在内存里的，所以一宕机就可能找不回来，所以要慎用。
 
 6. [HBase](http://hbase.apache.org)
 
@@ -90,22 +134,45 @@
 
 1. [Solr](http://lucene.apache.org/solr)
 
+	Solr是一个基于Lucene的Java搜索引擎服务器。
+
 2. [ElasticSearch](https://www.elastic.co/products/elasticsearch)
+	
+	ElasticSearch是一个基于Lucene的分布式搜索服务器
+	
+> [搜索引擎选择：Solr与ElasticSearch](http://www.cnblogs.com/chowmin/articles/4629220.html)
 
 3. [OpenSearch](https://www.aliyun.com/product/opensearch)
 
+	OpenSearch是一款阿里巴巴自主研发的大规模分布式搜索引擎平台。
 
 ## 爬虫
 
 1. [WebMagic](http://webmagic.io)
+	
+	目前看到的最好用的爬虫框架，现在用Java写爬虫方便多了，我原来都是用httpClient，自己封装方法的啊。。
 
 2. [神箭手](http://www.shenjianshou.cn) 
+
+	这是个爬虫市场，提供了很多免费/收费的爬虫，如果你想省时省力可以尝试在这里找下。
+	
+## 发送邮件
+
+1. [JavaMail](http://www.oracle.com/technetwork/java/javamail/index.html)
+
+	Oracle 官方提供的邮件发送工具
+
+2. [Simple Java Mail](http://www.simplejavamail.org)
+
+	很好用的邮件发送工具，api简单易用，支持链式语法。
 
 ## 前端渲染模板
 
 1. [Velocity](http://velocity.apache.org)
 
-2. [Thymeleaf](http://www.thymeleaf.org/)
+2. [Thymeleaf](http://www.thymeleaf.org)
+
+> 2个都是前端模板，除了语法不同，没啥区别，看个人喜好吧。
 
 ## Util工具
 从Json到日期的各种Util，想到什么写什么吧
@@ -122,18 +189,27 @@
 	
 	一些复杂的java-util类方法
 
-## 部署
+## 持续集成
+
+> 持续集成是指每次集成都通过**自动化**的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。
 
 1. [Jenkins](https://jenkins.io/index.html)
+
+	* 持续的软件版本发布/测试项目。
+	* 监控外部调用执行的工作。
 
 ## 测试
 
 1. Junit
 
-	> Java 自带的包
+	Java 自带的包
 	
 2. [mockito](https://github.com/mockito/mockito)	
-
+	模拟测试框架
+	
+> [SpringBoot与JUnit+Mockito 单元测试](https://zhuanlan.zhihu.com/p/21444517)
+	
+## 备注	
 
 > PS1. 可以看出我上面列举的模块，大部分都添加了阿里云或者同类型产品，因为个人认为自己搞这个的成本（这里包括人工、时间、可能遇到无法解决的bug）太高，所以推荐能使用其他人的轮子就使用其他人的轮子吧。
 
