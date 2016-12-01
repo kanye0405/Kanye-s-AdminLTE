@@ -3,6 +3,8 @@
 
 > 最近深感后端要学的东西太多了，为了不至于拣了芝麻丢了西瓜，同时与大家分享下知道的一些东西，所以写了这篇文章
 
+[一些Java有用的链接](https://github.com/Vedenin/useful-java-links)
+
 ## 框架
 这里就不根据三层架构来细分了
 
@@ -43,6 +45,55 @@
 3. [Gradle](https://gradle.org)
 
 	谷歌的项目管理工具，目前很多Android项目都是使用它来管理的，而它也可以用于后台
+
+## Apache Commons工具包
+
+Apache Commons是一个非常有用的工具包，虽然它提供的大部分功能现在都有更优秀的选择，这里我只讲几个常用的以及其替代品，具体信息可以参考[Apache Commons 工具包](http://langgufu.iteye.com/blog/1913579)
+
+1. BeanUtils
+
+	最常用的情况就是查数据库一个bean，前端展示另一个bean，如果一个个去get/set会很冗余，于是就采用BeanUtils.copyProperties 来复制相同名字的字段。
+	
+	> 如果相同名称字段类型不同，会报错
+	
+2. Codec
+
+	加密/哈希，url解析，生产二维码，图片转Base64等都可能用到。不过这些现在网上都有封装好的方法，所以一般不需要直接使用这个方法。
+	
+3. Collections
+
+	Java Collection框架的扩展，比如通过value获得key，删除一个集合里的元素并返回删除的元素等。
+	
+4. Configuration
+
+	Commons-Configuration 可以帮助处理配置文件的，如读写.properties、.xml文件等
+	
+5. FileUpload
+
+	FileUpload 就是上传文件了，不过现在有很多云存储，可以选择上传到云上
+
+6. HttpClient
+
+	模拟http请求，我原来就是用这个做爬虫的，只不过WebMagic封装了它，所以现在使用webMagic更好
+
+7. IO
+
+	IO 是一个 I/O 工具集
+
+8. Lang
+
+	java.lang的拓展工具集
+
+9. Math
+
+	Math 是一个轻量的，自包含的数学和统计组件，解决了许多非常通用但没有及时出现在Java标准语言中的实践问题.
+
+
+##Google Guava包
+
+[Guava](https://github.com/google/guava) 是一个 Google 的基于java1.6的类库集合的扩展项目，包括 collections, caching, primitives support, concurrency libraries, common annotations, string processing, I/O, 等等. 
+
+> 如果英语不好，可以看看[Google Guava官方教程（中文版）](http://ifeve.com/google-guava)
 
 ## 注解
 > 感觉挺有用的，但又不知道怎么给他分类
