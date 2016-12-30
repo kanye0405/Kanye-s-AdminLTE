@@ -29,7 +29,16 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-
+  <!-- Flatpickr -->
+  <link rel="stylesheet" href="../../plugins/flatpickr/flatpickr.min.css">
+  <link rel="stylesheet" href="../../plugins/flatpickr/themes/airbnb.css">
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/base16_flat.css">-->
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/confetti.css">-->
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/dark.css">-->
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/material_blue.css">-->
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/material_green.css">-->
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/material_orange.css">-->
+  <!--<link rel="stylesheet" href="../../plugins/flatpickr/themes/material_red.css">-->
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -732,6 +741,48 @@
           </div>
           <!-- /.box -->
 
+          <!-- flatpickr -->
+          <div class="box box-warning">
+            <div class="box-header">
+              <h3 class="box-title">Flatpickr</h3>
+            </div>
+            <!-- 通过切换注释的theme.css改变样式-->
+            <div class="box-body">
+              <!-- Default Date Picker -->
+              <div class="form-group">
+                <label>默认:</label>
+                <input type="text" class="form-control my-flatpickr-default">
+              </div>
+              <!-- /.form group -->
+
+              <!-- Date Picker With Time And Different Format-->
+              <div class="form-group">
+                <label>可以选择时间、自定义格式:</label>
+                <input type="text" class="form-control my-flatpickr-readable-time">
+              </div>
+              <!-- /.form group -->
+
+              <!-- Date Picker With Icon -->
+              <div class="form-group">
+                <label>通过图标打开/关闭日历，有默认时间:</label>
+                <div class="my-flatpickr-custom-icon input-group">
+                  <input placeholder="Pick date" class="form-control" data-input >
+                  <a class="input-button input-group-addon" data-toggle><i class="fa fa-fw fa-calendar-o"></i></a>
+                  <a class="input-button input-group-addon" data-clear><i class="fa fa-fw fa-close"></i></a>
+                </div>
+              </div>
+
+              <!-- Range Date Picker  -->
+              <div class="form-group">
+                <label>范围选择时间，禁止选择周末:</label>
+                <input type="text" class="form-control my-flatpickr-range">
+              </div>
+              <!-- /.form group -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
         </div>
         <!-- /.col (left) -->
         <div class="col-md-6">
@@ -902,6 +953,58 @@
             <div class="box-footer">
               Many more skins available. <a href="http://fronteed.com/iCheck/">Documentation</a>
             </div>
+          </div>
+          <!-- /.box -->
+
+          <!-- cleave -->
+          <div class="box box-warning">
+            <div class="box-header">
+              <h3 class="box-title">Cleave</h3>
+            </div>
+            <div class="box-body">
+              <!-- Phone Mask -->
+              <div class="form-group">
+                <label>国内11位手机:</label>
+
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input type="text" class="form-control my-cleave-phone">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- Credit Card Mask -->
+              <div class="form-group">
+                <label>招商银行信用卡（6225开头,4个4位数字组成）:</label>
+
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-credit-card"></i>
+                  </div>
+                  <input type="text" class="form-control my-cleave-card">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- Money Mask -->
+              <div class="form-group">
+                <label>请输入金钱:</label>
+
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-cny"></i>
+                  </div>
+                  <input type="text" class="form-control my-cleave-money">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+            </div>
+            <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
@@ -1143,6 +1246,10 @@
 <script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
 <script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- Flatpickr -->
+<script src="../../plugins/flatpickr/flatpickr.min.js"></script>
+<!-- Cleave -->
+<script src="../../plugins/cleave/cleave.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -1213,6 +1320,47 @@
     //Timepicker
     $(".timepicker").timepicker({
       showInputs: false
+    });
+
+    flatpickr(".my-flatpickr-default", {});
+
+    flatpickr(".my-flatpickr-readable-time", {
+      enableTime: true,
+      altInput: true,
+      time_24hr: true,
+      altFormat: "Y年m月d日 H点i分"
+    });
+
+    flatpickr(".my-flatpickr-custom-icon", {
+      wrap: true,
+      defaultDate : new Date(),
+      clickOpens: false // 点击输入框不再跳出日历
+    });
+
+    flatpickr(".my-flatpickr-range", {
+      "mode": "range",
+      disable:[
+        function (date) {
+          return date.getDay() == 0 || date.getDay()== 6;
+        }
+      ]
+    });
+
+    var phoneCleave = new Cleave('.my-cleave-phone', {
+      delimiter: ' ',
+      blocks: [3, 4, 4],
+      numericOnly: true
+    });
+
+    var cardCleave = new Cleave('.my-cleave-card', {
+      delimiter: '-',
+      blocks: [4, 4, 4, 4],
+      numericOnly: true,
+      prefix:"6225"
+    });
+
+    var moneyCleave = new Cleave('.my-cleave-money', {
+      numeral: true
     });
   });
 </script>

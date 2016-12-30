@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Animate -->
+  <link rel="stylesheet" href="../../plugins/animate/animate.css">
+  <!-- Sweetalert2 -->
+  <link rel="stylesheet" href="../../plugins/sweetalert2/sweetalert2.min.css">
+  <!-- IziModal -->
+  <link rel="stylesheet" href="../../plugins/izimodal/iziModal.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -26,19 +32,103 @@
   <![endif]-->
 
   <style>
-    .example-modal .modal {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      right: auto;
-      left: auto;
-      display: block;
-      z-index: 1;
+    .swal2-modal .btn {
+      margin:25px 10px 0;
+      padding: 10px 20px;
+      font-size: 18px;
     }
 
-    .example-modal .modal {
-      background: transparent !important;
+
+    #izimodal-custom .iziModal-content header{
+      background: #eee;
+      margin-bottom: 10px;
+      overflow: hidden;
+      border-radius: 3px 3px 0 0;
+      width: 100%;
     }
+    #izimodal-custom .iziModal-content header a{
+      display: block;
+      float: left;
+      width: 50%;
+      padding: 0;
+      text-align: center;
+      background: #ddd;
+      color: #999;
+      height: 73px;
+      vertical-align: middle;
+      line-height: 73px;
+    }
+    #izimodal-custom .iziModal-content header a.active{
+      background: #fff;
+      color: #777;
+    }
+    #izimodal-custom .iziModal-content section{
+      padding: 30px;
+    }
+    #izimodal-custom .iziModal-content section input:not([type="checkbox"]), #izimodal-custom .iziModal-content section button{
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      margin-bottom: 26px;
+      padding: 15px;
+      font-size: 14px;
+    }
+    #izimodal-custom .iziModal-content section button{
+      height: 46px;
+      padding: 0;
+    }
+
+    #izimodal-custom .iziModal-content section input:focus{
+      border-color:#28CA97;
+    }
+    #izimodal-custom .iziModal-content section label[for="check"]{
+      margin-bottom: 26px;
+      font-size: 14px;
+      color: #999;
+      display: block;
+    }
+    #izimodal-custom .iziModal-content section footer{
+      overflow: hidden;
+    }
+    #izimodal-custom .iziModal-content section button{
+      background: #28CA97;
+      color: white;
+      margin: 0;
+      border: 0;
+      cursor: pointer;
+      width: 50%;
+      float: left;
+    }
+    #izimodal-custom .iziModal-content section button:hover{
+      opacity: 0.8;
+    }
+    #izimodal-custom .iziModal-content section button:nth-child(1){
+      border-radius: 3px 0 0 3px;
+      background: #aaa;
+    }
+    #izimodal-custom .iziModal-content section button:nth-child(2){
+      border-radius: 0 3px 3px 0;
+    }
+
+    #izimodal-custom .iziModal-content .icon-close{
+      background: #FFF;
+      margin-bottom: 10px;
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      color: #a9a9a9;
+      cursor: pointer;
+    }
+    #izimodal-custom .iziModal-content .icon-close:hover, #izimodal-custom .iziModal-content .icon-close:focus{
+      color: black;
+    }
+
   </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -520,165 +610,190 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="callout callout-info">
-        <h4>Reminder!</h4>
-        Instructions for how to use modals are available on the
-        <a href="http://getbootstrap.com/javascript/#modals">Bootstrap documentation</a>
+      <div class="callout callout-danger">
+        <h4>新版提示框！</h4>
+        <a href="http://getbootstrap.com/javascript/#modals">Bootstrap的提示框</a>太low了，看<a href="https://limonte.github.io/sweetalert2" target="_blank">sweetalert</a>和<a href="http://izimodal.marcelodolce.com/" target="_blank">iziModal</a> 的。另外<a href="http://izitoast.marcelodolce.com/" target="_blank">iziToast</a>也很漂亮，强力推荐。
       </div>
 
-      <div class="example-modal">
-        <div class="modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Default Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+      <!-- Sweetalert Button -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>自定义</h3>
+              <p>自定义弹框内容</p>
             </div>
-            <!-- /.modal-content -->
+            <div class="icon">
+              <i class="fa fa-exclamation"></i>
+            </div>
+            <a href="#" class="small-box-footer my-sweetalert-1">
+              点我
+            </a>
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-      </div>
-      <!-- /.example-modal -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>交互</h3>
 
-      <div class="example-modal">
-        <div class="modal modal-primary">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Primary Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
+              <p>回调事件触发新弹框</p>
             </div>
-            <!-- /.modal-content -->
+            <div class="icon">
+              <i class="fa fa-lightbulb-o"></i>
+            </div>
+            <a href="#" class="small-box-footer my-sweetalert-2">
+              点我
+            </a>
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-      </div>
-      <!-- /.example-modal -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>连锁</h3>
 
-      <div class="example-modal">
-        <div class="modal modal-info">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Info Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
+              <p>允许链式输入</p>
             </div>
-            <!-- /.modal-content -->
+            <div class="icon">
+              <i class="fa fa-question"></i>
+            </div>
+            <a href="#" class="small-box-footer my-sweetalert-3">
+              点我
+            </a>
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-      </div>
-      <!-- /.example-modal -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>特效</h3>
 
-      <div class="example-modal">
-        <div class="modal modal-warning">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Warning Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
+              <p>支持<a href="https://daneden.github.io/animate.css" target="_blank">Animate.css</a></p>
             </div>
-            <!-- /.modal-content -->
+            <div class="icon">
+              <i class="fa fa-optin-monster"></i>
+            </div>
+            <a href="#" class="small-box-footer my-sweetalert-4">
+              点我
+            </a>
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
+        <!-- ./col -->
       </div>
-      <!-- /.example-modal -->
+      <!-- /.row -->
 
-      <div class="example-modal">
-        <div class="modal modal-success">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Success Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
+      <!-- Izimodal -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>IFrame</h3>
+              <p>在modal中打开网页</p>
             </div>
-            <!-- /.modal-content -->
+            <div class="icon">
+              <i class="fa fa-internet-explorer"></i>
+            </div>
+            <a href="#" class="trigger small-box-footer my-izimodal-1">
+              点我
+            </a>
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-      </div>
-      <!-- /.example-modal -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>倒计时</h3>
 
-      <div class="example-modal">
-        <div class="modal modal-danger">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Danger Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
+              <p>10s后关闭</p>
             </div>
-            <!-- /.modal-content -->
+            <div class="icon">
+              <i class="fa fa-hourglass-1"></i>
+            </div>
+            <a href="#" class="small-box-footer my-izimodal-2">
+              点我
+            </a>
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3>登录</h3>
+
+              <p>更优雅的登录框</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-user"></i>
+            </div>
+            <a href="#" class="small-box-footer my-izimodal-3">
+              点我
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>警告</h3>
+
+              <p>这很醒目！</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-close"></i>
+            </div>
+            <a href="#" class="small-box-footer my-izimodal-4">
+              点我
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
       </div>
-      <!-- /.example-modal -->
+      <!-- /.row -->
+
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div id="izimodal-frame" class="iziModal" ></div>
+  <div id="izimodal-success" class="iziModal" data-iziModal-group="alert" data-iziModal-loop></div>
+  <div id="izimodal-custom" class="iziModal" data-iziModal-group="grupo1">
+    <button data-iziModal-close class="icon-close">
+      <i class="fa fa-close"></i>
+    </button>
+    <header>
+      <a href="" id="signin">Sign in</a>
+      <a href="" class="active">New Account</a>
+    </header>
+    <section class="hide">
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <footer>
+        <button data-iziModal-close>Cancel</button>
+        <button class="submit">Log in</button>
+      </footer>
+    </section>
+    <section>
+      <input type="text" placeholder="Username">
+      <input type="text" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <label for="check"><input type="checkbox" name="checkbox" id="check" value="1"> I agree to the <u>Terms</u>.</label>
+      <footer>
+        <button data-iziModal-close data-iziModal-transitionOut="bounceOutDown">Cancel</button>
+        <button class="submit">Create Account</button>
+      </footer>
+    </section>
+  </div>
+  <div id="izimodal-danger" class="iziModal"></div>
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -891,9 +1006,191 @@
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- Sweetalert2 -->
+<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- IziModal -->
+<script src="../../plugins/izimodal/iziModal.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script>
+
+  $('.my-sweetalert-1').click(function(){
+      swal({
+      title: '<i>自定义</i> <u>标题</u>',
+      type: 'info',
+      html:
+      '这里可以添加<b>任意HTML元素</b>, ' +
+      '<a href="//github.com">甚至是链接</a>',
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonText:
+              '<i class="fa fa-thumbs-up"></i> 确定',
+      cancelButtonText:
+              '<i class="fa fa-thumbs-down"></i>'
+    })
+  });
+
+  $('.my-sweetalert-2').click(function(){
+    swal({
+      title: '你确定要删除么?',
+      text: "此操作不可撤销!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '确定，我要删除XXXX',
+      cancelButtonText: '取消',
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: false
+    }).then(function () {
+      swal(
+              '删除成功',
+              'XXXX文件已被删除！',
+              'success'
+      )
+    }, function (dismiss) {
+      // dismiss can be 'cancel', 'overlay',
+      // 'close', and 'timer'
+      if (dismiss === 'cancel') {
+        swal(
+                '取消删除',
+                'XXXX文件并未被删除',
+                'error'
+        )
+      }
+    })
+  });
+
+  $('.my-sweetalert-3').click(function(){
+    //初始化，每次点击都要执行
+    swal.setDefaults({
+      input: 'text',
+      confirmButtonText: '下一个 &rarr;',
+      showCancelButton: true,
+      animation: false,
+      progressSteps: ['1', '2', '3']
+    })
+
+    var steps = [
+      {
+        title: '第一个愿望',
+        text: '我是一个神灯，我可以实现你3个愿望哦~'
+      },
+      '第二个愿望',
+      '第三个愿望'
+    ]
+
+    swal.queue(steps).then(function (result) {
+      swal.resetDefaults()
+      swal({
+        title: '好',
+        html:
+        '你的愿望是: <pre>' +
+        JSON.stringify(result) +
+        '</pre> 我并不能实现',
+        confirmButtonText: '蛤蛤!',
+        showCancelButton: false
+      })
+    }, function () {
+      swal.resetDefaults()
+    })
+  });
+
+  $('.my-sweetalert-4').click(function(){
+    swal({
+      title: '404',
+      type: 'error',
+      html: '找不到女朋友',
+      animation: false,
+      customClass: 'animated tada'
+    })
+  });
+
+  //初始化modal
+  $("#izimodal-frame").iziModal({
+    headerColor: '#000',
+    title: '百度',
+    subtitle: '通过一个弹框打开的网页。',
+    icon: 'icon-settings_system_daydream',
+    overlayClose: true,
+    iframe : true,
+    iframeURL: 'https://www.baidu.com',
+    fullscreen: true,
+    openFullscreen: false,
+    group: 'grupo1',
+    onFullscreen: function(modal){
+      console.log(modal.isFullscreen);
+    },
+    onResize: function(modal){
+      console.log(modal.modalHeight);
+    }
+  });
+
+  //监听点击
+  $('.my-izimodal-1').click(function(){
+    event.preventDefault();
+    $('#izimodal-frame').iziModal('open');
+  });
+
+  $("#izimodal-success").iziModal({
+    title: "这是一个弹框，试着把鼠标悬浮其上吧！",
+    icon: 'icon-check',
+    headerColor: '#00af66',
+    width: 600,
+    timeout: 10000,
+    timeoutProgressbar: true,
+    transitionIn: 'fadeInUp',
+    transitionOut: 'fadeOutDown',
+    attached: 'bottom',
+    pauseOnHover: true
+  });
+
+  $('.my-izimodal-2').click(function(){
+    event.preventDefault();
+    $('#izimodal-success').iziModal('open');
+  });
+
+  $("#izimodal-custom").iziModal({
+    overlayClose: false,
+    width: 600,
+    overlayColor: 'rgba(0, 0, 0, 0.6)',
+    transitionIn: 'bounceInDown',
+    navigateCaption: true,
+    navigateArrows: 'closeScreenEdge',
+    onOpened: function() {
+      //console.log('onOpened');
+    },
+    onClosed: function() {
+      //console.log('onClosed');
+    }
+  });
+
+  $('.my-izimodal-3').click(function(){
+    event.preventDefault();
+    $('#izimodal-custom').iziModal('open');
+  });
+
+  $("#izimodal-danger").iziModal({
+    title: "警告",
+    subtitle: '侦测到在途的聚变打击...',
+    icon: 'fa fa-rocket',
+    headerColor: '#BD5B5B',
+    width: 600,
+    timeout: 5000,
+    timeoutProgressbar: true,
+    transitionIn: 'fadeInDown',
+    transitionOut: 'fadeOutDown',
+    pauseOnHover: true
+  });
+
+  $('.my-izimodal-4').click(function(){
+    event.preventDefault();
+    $('#izimodal-danger').iziModal('open');
+  });
+
+</script>
 </body>
 </html>
